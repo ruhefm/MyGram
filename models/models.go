@@ -59,10 +59,10 @@ type LoginRequest struct {
 
 type Photos struct {
 	ID        uint       `json:"id" gorm:"primary_key;type:bigint"`
-	Title     string     `json:"title" valid:"required" gorm:"type:varchar(100);not null; default:null"`
+	Title     string     `json:"title" gorm:"type:varchar(100);not null; default:null"`
 	Caption   string     `json:"caption" gorm:"type:varchar(200);"`
-	PhotoURL  string     `json:"photo_url" valid:"url, required" gorm:"type:text;not null; default:null"`
-	UserID    uint       `json:"user_id" valid:"required" gorm:"type:bigint;not null; default:null"`
+	PhotoURL  string     `json:"photo_url" valid:"url" gorm:"type:text;not null; default:null"`
+	UserID    uint       `json:"user_id" gorm:"type:bigint;not null; default:null"`
 	User      Users      `json:"user" gorm:"foreignKey:ID; references:UserID"`
 	CreatedAt time.Time  `json:"created_at" gorm:"type:timestamp"`
 	UpdatedAt time.Time  `json:"updated_at" gorm:"type:timestamp"`
@@ -85,6 +85,8 @@ type Comments struct {
 	Message   string    `json:"message" gorm:"type:varchar(200);"`
 	CreatedAt time.Time `json:"created_at" gorm:"type:timestamp"`
 	UpdatedAt time.Time `json:"updated_at" gorm:"type:timestamp"`
+	User      Users     `json:"user" gorm:"foreignKey:ID; references:UserID"`
+	Photo     Photos    `json:"photo" gorm:"foreignKey:ID; references:PhotoID"`
 }
 
 func (user *Comments) BeforeCreate(tx *gorm.DB) (err error) {

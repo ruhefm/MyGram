@@ -199,6 +199,23 @@ type UserResponse struct {
 	Username string `json:"username"`
 }
 
+type CommentListResponse struct {
+	ID      uint          `json:"id"`
+	Message string        `json:"message"`
+	PhotoID uint          `json:"photo_id"`
+	UserID  uint          `json:"user_id"`
+	User    UserResponse  `json:"user"`
+	Photo   PhotoResponse `json:"photo"`
+}
+
+type PhotoResponse struct {
+	ID       uint   `json:"id"`
+	Caption  string `json:"caption"`
+	Title    string `json:"title"`
+	PhotoURL string `json:"photo_url"`
+	UserID   uint   `json:"user_id"`
+}
+
 func PhotoList(c *gin.Context) {
 	// isi photos dengan models photos
 	var photos []models.Photos
@@ -342,17 +359,132 @@ func CommentPost(c *gin.Context) {
 	}
 
 	c.JSON(201, response)
-
-	// type Comments struct {
-	// 	ID        uint      `json:"id" gorm:"primary_key;type:bigint"`
-	// 	UserID    uint      `json:"user_id" gorm:"type:bigint;not null"`
-	// 	PhotoID   uint      `json:"photo_id" gorm:"type:bigint;not null"`
-	// 	Message   string    `json:"message" gorm:"type:varchar(200);"`
-	// 	CreatedAt time.Time `json:"created_at" gorm:"type:timestamp"`
-	// 	UpdatedAt time.Time `json:"updated_at" gorm:"type:timestamp"`
-	// }
-
 }
+
+func CommentList(c *gin.Context) {
+	// isi photos dengan models photos
+	var comments []models.Comments
+	db := database.GetDB()
+	//cari data photo di db
+	db.Preload("User").Preload("Photo").Find(&comments)
+
+	//custom resp
+	var response []CommentListResponse
+	// untuk photo didalam photos ulang sebanyak photos
+	for _, comment := range comments {
+		resp := CommentListResponse{
+			ID:      comment.ID,
+			Message: comment.Message,
+			PhotoID: comment.PhotoID,
+			UserID:  comment.UserID,
+			User:    UserResponse{ID: comment.User.ID, Email: comment.User.Email, Username: comment.User.Username},
+			Photo:   PhotoResponse{ID: comment.Photo.ID, Caption: comment.Photo.Caption, Title: comment.Photo.Title, PhotoURL: comment.Photo.PhotoURL, UserID: comment.Photo.UserID},
+		}
+		response = append(response, resp)
+	}
+
+	c.JSON(200, response)
+}
+
+func CommentListByID(c *gin.Context) {
+	id := c.Param("id")
+	var comment models.Comments
+	db := database.GetDB()
+	if err := db.Preload("User").Preload("Photo").First(&comment, id).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Comments not found"})
+		return
+	}
+	response := CommentListResponse{
+		ID:      comment.ID,
+		Message: comment.Message,
+		PhotoID: comment.PhotoID,
+		UserID:  comment.UserID,
+		User:    UserResponse{ID: comment.User.ID, Email: comment.User.Email, Username: comment.User.Username},
+		Photo:   PhotoResponse{ID: comment.Photo.ID, Caption: comment.Photo.Caption, Title: comment.Photo.Title, PhotoURL: comment.Photo.PhotoURL, UserID: comment.Photo.UserID},
+	}
+	c.JSON(200, response)
+}
+
+func CommentUpdate(c *gin.Context) {
+	id := c.Param("id")
+	idConvert, err := strconv.Atoi(id)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	var comment models.Comments
+	if err := c.BindJSON(&comment); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	userData := c.MustGet("userData").(jwt.MapClaims)
+	userID := uint(userData["id"].(float64))
+
+	db := database.GetDB()
+
+	result := db.Model(&models.Comments{}).Where("user_id = ?", userID).Where("id = ?", idConvert).Updates(comment)
+
+	if result.RowsAffected == 0 {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Comment tidak ada yang berubah"})
+		return
+	}
+	if result.Error != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": result.Error.Error()})
+		return
+	}
+	if err := db.Preload("User").Preload("Photo").Where("user_id = ?", userID).Where("id = ?", idConvert).First(&comment).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Comment tidak ditemukan"})
+		return
+	}
+
+	response := struct {
+		ID      uint   `json:"id"`
+		Message string `json:"message"`
+		PhotoID uint   `json:"photo_id"`
+		UserID  uint   `json:"user_id"`
+	}{
+		ID:      uint(idConvert),
+		Message: comment.Message,
+		PhotoID: comment.Photo.ID,
+		UserID:  comment.User.ID,
+	}
+	c.JSON(200, response)
+}
+
+func CommentDelete(c *gin.Context) {
+	id := c.Param("id")
+	idConvert, err := strconv.Atoi(id)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid id"})
+		return
+	}
+	userData, _ := c.Get("userData")
+	userID := userData.(jwt.MapClaims)["id"].(float64)
+
+	db := database.GetDB()
+	var user models.Comments
+	if err := db.Where("user_id = ?", userID).Where("id = ?", idConvert).First(&user).Error; err != nil {
+		c.JSON(http.StatusNotFound, gin.H{"error": "Data tidak ada!"})
+		return
+	}
+
+	if err := db.Delete(&user).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Gagal menghapus data!"})
+		return
+	}
+
+	c.JSON(200, "OK")
+}
+
+// type Comments struct {
+// 	ID        uint      `json:"id" gorm:"primary_key;type:bigint"`
+// 	UserID    uint      `json:"user_id" gorm:"type:bigint;not null"`
+// 	PhotoID   uint      `json:"photo_id" gorm:"type:bigint;not null"`
+// 	Message   string    `json:"message" gorm:"type:varchar(200);"`
+// 	CreatedAt time.Time `json:"created_at" gorm:"type:timestamp"`
+// 	UpdatedAt time.Time `json:"updated_at" gorm:"type:timestamp"`
+// }
 
 // jika tidak pakai validator
 

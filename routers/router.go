@@ -37,8 +37,12 @@ func StartServer() *gin.Engine {
 	}
 	commentRoute := router.Group("/comments")
 	{
+		commentRoute.GET("/", controllers.CommentList)
+		commentRoute.GET("/:id", controllers.CommentListByID)
 		commentRoute.Use(middlewares.Authentication())
 		commentRoute.POST("/", controllers.CommentPost)
+		commentRoute.PUT("/:id", controllers.CommentUpdate)
+		commentRoute.DELETE("/:id", controllers.CommentDelete)
 	}
 
 	router.Static("/public", "./templates")
