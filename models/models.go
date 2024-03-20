@@ -55,26 +55,38 @@ func (user *Users) BeforeCreate(tx *gorm.DB) (err error) {
 	return nil
 }
 
-func (user *Users) BeforeUpdate(tx *gorm.DB) (err error) {
-	if user.Password != "" {
-		user.Password = helpers.HashDong(user.Password)
-	}
-	return nil
-}
+// Kurang berfungsi
+
+// func (user *Users) BeforeUpdate(tx *gorm.DB) (err error) {
+// 	if user.Password != "" {
+// 		hash := helpers.HashDong(user.Password)
+// 		user.Password = hash
+// 	}
+// 	return nil
+// }
 
 type LoginRequest struct {
 	Email    string `json:"email" valid:"required, email" binding:"required"`
 	Password string `json:"password" valid:"required,minstringlength(6)" binding:"required"`
 }
 type Photos struct {
-	ID        uint      `json:"id" gorm:"primary_key;type:bigint"`
-	Title     string    `json:"title" gorm:"type:varchar(100);not null"`
-	Caption   string    `json:"caption" gorm:"type:varchar(200);"`
-	PhotoURL  string    `json:"photo_url" gorm:"type:text;not null"`
-	UserID    uint      `json:"user_id" gorm:"type:bigint;not null"`
-	User      Users     `json:"user" gorm:"foreignkey:UserID;references:ID"`
-	CreatedAt time.Time `json:"created_at" gorm:"type:timestamp"`
-	UpdatedAt time.Time `json:"updated_at" gorm:"type:timestamp"`
+	ID        uint       `json:"id" gorm:"primary_key;type:bigint"`
+	Title     string     `json:"title" gorm:"type:varchar(100);not null"`
+	Caption   string     `json:"caption" gorm:"type:varchar(200);"`
+	PhotoURL  string     `json:"photo_url" valid:"url" gorm:"type:text;not null"`
+	UserID    uint       `json:"user_id" gorm:"type:bigint;not null"`
+	CreatedAt time.Time  `json:"created_at" gorm:"type:timestamp"`
+	UpdatedAt time.Time  `json:"updated_at" gorm:"type:timestamp"`
+	Comments  []Comments `json:"comments" gorm:"foreignkey:PhotoID"`
+}
+
+func (user *Photos) BeforeCreate(tx *gorm.DB) (err error) {
+	_, errCreate := govalidator.ValidateStruct(user)
+	if errCreate != nil {
+		err = errCreate
+		return
+	}
+	return nil
 }
 
 type Comments struct {
@@ -84,6 +96,13 @@ type Comments struct {
 	Message   string    `json:"message" gorm:"type:varchar(200);"`
 	CreatedAt time.Time `json:"created_at" gorm:"type:timestamp"`
 	UpdatedAt time.Time `json:"updated_at" gorm:"type:timestamp"`
-	User      Users     `json:"user" gorm:"foreignkey:UserID;references:ID"`
-	Photo     Photos    `json:"photo" gorm:"foreignkey:PhotoID;references:ID"`
+}
+
+func (user *Comments) BeforeCreate(tx *gorm.DB) (err error) {
+	_, errCreate := govalidator.ValidateStruct(user)
+	if errCreate != nil {
+		err = errCreate
+		return
+	}
+	return nil
 }

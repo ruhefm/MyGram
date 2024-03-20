@@ -25,6 +25,17 @@ func StartServer() *gin.Engine {
 		usersRoute.PUT("/", controllers.UserUpdate)
 		usersRoute.DELETE("/", controllers.UserDelete)
 	}
+	photosRoute := router.Group("/photos")
+	{
+		photosRoute.Use(middlewares.Authentication())
+		photosRoute.POST("/", controllers.PhotoUpload)
+	}
+	commentRoute := router.Group("/comments")
+	{
+		commentRoute.Use(middlewares.Authentication())
+		commentRoute.POST("/", controllers.CommentPost)
+	}
+
 	router.Static("/public", "./templates")
 	router.GET("/", func(c *gin.Context) {
 		c.File("./templates/test.html")

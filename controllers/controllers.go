@@ -82,6 +82,10 @@ func UserUpdate(c *gin.Context) {
 	userData := c.MustGet("userData").(jwt.MapClaims)
 	userID := uint(userData["id"].(float64))
 
+	if request.Password != "" {
+		request.Password = helpers.HashDong(request.Password)
+	}
+
 	db := database.GetDB()
 	if err := db.Model(&models.Users{}).Where("id = ?", userID).Updates(request).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
@@ -110,16 +114,106 @@ func UserDelete(c *gin.Context) {
 	db := database.GetDB()
 	var user models.Users
 	if err := db.Where("id = ?", userID).First(&user).Error; err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Record not found!"})
+		c.JSON(http.StatusNotFound, gin.H{"error": "Data tidak ada!"})
 		return
 	}
 
 	if err := db.Delete(&user).Error; err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to delete data!"})
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Gagal menghapus data!"})
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "Success delete"})
+	c.JSON(200, "OK")
+}
+
+func PhotoUpload(c *gin.Context) {
+	userData, _ := c.Get("userData")
+	userDataID := uint(userData.(jwt.MapClaims)["id"].(float64))
+
+	var newPhoto models.Photos
+
+	if err := c.BindJSON(&newPhoto); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	newPhoto.UserID = userDataID
+	db := database.GetDB()
+
+	if err := db.Create(&newPhoto).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	response := struct {
+		ID       uint   `json:"id"`
+		Caption  string `json:"caption"`
+		Title    string `json:"title"`
+		PhotoURL string `json:"photo_url"`
+		UserID   uint   `json:"user_id"`
+	}{
+		ID:       newPhoto.ID,
+		Caption:  newPhoto.Caption,
+		Title:    newPhoto.Title,
+		PhotoURL: newPhoto.PhotoURL,
+		UserID:   userDataID,
+	}
+
+	c.JSON(201, response)
+
+	// type Photos struct {
+	// 	ID        uint      `json:"id" gorm:"primary_key;type:bigint"`
+	// 	Title     string    `json:"title" gorm:"type:varchar(100);not null"`
+	// 	Caption   string    `json:"caption" gorm:"type:varchar(200);"`
+	// 	PhotoURL  string    `json:"photo_url" valid:"url" gorm:"type:text;not null"`
+	// 	UserID    uint      `json:"user_id" gorm:"type:bigint;not null"`
+	// 	User      Users     `json:"user" gorm:"foreignkey:UserID;references:ID"`
+	// 	CreatedAt time.Time `json:"created_at" gorm:"type:timestamp"`
+	// 	UpdatedAt time.Time `json:"updated_at" gorm:"type:timestamp"`
+	// }
+
+}
+
+func CommentPost(c *gin.Context) {
+	userData, _ := c.Get("userData")
+	userDataID := uint(userData.(jwt.MapClaims)["id"].(float64))
+
+	var newComment models.Comments
+
+	if err := c.BindJSON(&newComment); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	newComment.UserID = userDataID
+	db := database.GetDB()
+
+	if err := db.Create(&newComment).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	response := struct {
+		ID      uint   `json:"id"`
+		Message string `json:"message"`
+		PhotoID uint   `json:"photo_id"`
+		UserID  uint   `json:"user_id"`
+	}{
+		ID:      newComment.ID,
+		Message: newComment.Message,
+		PhotoID: newComment.PhotoID,
+		UserID:  newComment.UserID,
+	}
+
+	c.JSON(201, response)
+
+	// type Comments struct {
+	// 	ID        uint      `json:"id" gorm:"primary_key;type:bigint"`
+	// 	UserID    uint      `json:"user_id" gorm:"type:bigint;not null"`
+	// 	PhotoID   uint      `json:"photo_id" gorm:"type:bigint;not null"`
+	// 	Message   string    `json:"message" gorm:"type:varchar(200);"`
+	// 	CreatedAt time.Time `json:"created_at" gorm:"type:timestamp"`
+	// 	UpdatedAt time.Time `json:"updated_at" gorm:"type:timestamp"`
+	// }
+
 }
 
 // jika tidak pakai validator
