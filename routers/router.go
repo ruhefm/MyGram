@@ -27,8 +27,13 @@ func StartServer() *gin.Engine {
 	}
 	photosRoute := router.Group("/photos")
 	{
+		photosRoute.GET("/", controllers.PhotoList)
+		photosRoute.GET("/:id", controllers.PhotoListByID)
 		photosRoute.Use(middlewares.Authentication())
 		photosRoute.POST("/", controllers.PhotoUpload)
+		photosRoute.PUT("/:id", controllers.PhotoUpdate)
+		photosRoute.DELETE("/:id", controllers.PhotoDelete)
+
 	}
 	commentRoute := router.Group("/comments")
 	{

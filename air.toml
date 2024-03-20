@@ -1,0 +1,12 @@
+root = "."
+tmp_dir = "tmp"
+build_delay = 1000
+colors = true
+log = "info"
+[build]
+  binary = "./"
+  exclude_dir = "^vendor"
+  exclude_file = ""
+  exclude_regex = ""
+[log]
+  requests = true
