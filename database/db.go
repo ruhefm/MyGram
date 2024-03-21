@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	host     = "postgres.railway.internal"
+	host     = "postgresql://postgres:herpoGApTykLcYoApIdtZhEPDVMRTKcw@postgres.railway.internal:5432/railway"
 	username = "postgres"
 	password = "herpoGApTykLcYoApIdtZhEPDVMRTKcw"
 	dbName   = "railway"
