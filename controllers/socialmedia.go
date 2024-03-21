@@ -65,7 +65,10 @@ func SocialList(c *gin.Context) {
 	db := database.GetDB()
 	//cari data photo di db
 	db.Preload("User").Find(&comments)
-
+	if len(comments) == 0 {
+		c.JSON(http.StatusNotFound, gin.H{"message": "Tidak ada data"})
+		return
+	}
 	//custom resp
 	var response []SocialListResponse
 	// untuk photo didalam photos ulang sebanyak photos

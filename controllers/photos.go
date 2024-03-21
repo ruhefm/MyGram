@@ -87,7 +87,10 @@ func PhotoList(c *gin.Context) {
 	db := database.GetDB()
 	//cari data photo di db
 	db.Preload("User").Find(&photos)
-
+	if len(photos) == 0 {
+		c.JSON(http.StatusNotFound, gin.H{"message": "Tidak ada data"})
+		return
+	}
 	//custom resp
 	var response []PhotoListResponse
 	// untuk photo didalam photos ulang sebanyak photos

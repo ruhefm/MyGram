@@ -73,7 +73,10 @@ func CommentList(c *gin.Context) {
 	db := database.GetDB()
 	//cari data photo di db
 	db.Preload("User").Preload("Photo").Find(&comments)
-
+	if len(comments) == 0 {
+		c.JSON(http.StatusNotFound, gin.H{"message": "Tidak ada data"})
+		return
+	}
 	//custom resp
 	var response []CommentListResponse
 	// untuk photo didalam photos ulang sebanyak photos
