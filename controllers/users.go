@@ -11,6 +11,42 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+type UsersListResponse struct {
+	ID              uint                `json:"id" gorm:"primary_key;type:bigint"`
+	Username        string              `json:"username" valid:"alphanum,minstringlength(3)"`
+	Email           string              `json:"email" form:"email" valid:"email"`
+	Age             uint                `json:"age"`
+	ProfileImageURL string              `json:"profile_image_url"`
+	SocialMedias    SocialMediaResponse `json:"social_medias"`
+	Photos          PhotosResponse      `json:"photos" `
+	Comments        CommentsResponse    `json:"comments" `
+}
+
+type SocialMediaResponse struct {
+	ID             uint   `json:"id"`
+	Name           string `json:"name"`
+	SocialMediaURL string `json:"social_media_url"`
+	UserID         uint   `json:"user_id"`
+}
+
+type PhotosResponse struct {
+	ID       uint         `json:"id"`
+	Caption  string       `json:"caption"`
+	Title    string       `json:"title"`
+	PhotoURL string       `json:"photo_url"`
+	UserID   uint         `json:"user_id"`
+	User     UserResponse `json:"user"`
+}
+
+type CommentsResponse struct {
+	ID      uint                 `json:"id"`
+	Message string               `json:"message"`
+	PhotoID uint                 `json:"photo_id"`
+	UserID  uint                 `json:"user_id"`
+	User    CommentUserResponse  `json:"user"`
+	Photo   CommentPhotoResponse `json:"photo"`
+}
+
 func UserRegister(c *gin.Context) {
 	var newUser models.Users
 
