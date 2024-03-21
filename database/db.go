@@ -9,11 +9,11 @@ import (
 )
 
 const (
-	host     = "localhost"
+	host     = "postgres.railway.internal"
 	username = "postgres"
-	password = "test123456"
-	dbName   = "db-go-sql"
-	port     = 5432
+	password = "herpoGApTykLcYoApIdtZhEPDVMRTKcw"
+	dbName   = "railway"
+	port     = 57289
 )
 
 var (
