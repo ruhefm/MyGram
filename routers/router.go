@@ -44,6 +44,15 @@ func StartServer() *gin.Engine {
 		commentRoute.PUT("/:id", controllers.CommentUpdate)
 		commentRoute.DELETE("/:id", controllers.CommentDelete)
 	}
+	socialRoute := router.Group("/socialmedias")
+	{
+		socialRoute.GET("/", controllers.SocialList)
+		socialRoute.GET("/:id", controllers.SocialListByID)
+		socialRoute.Use(middlewares.Authentication())
+		socialRoute.POST("/", controllers.SocialPost)
+		socialRoute.PUT("/:id", controllers.SocialUpdate)
+		socialRoute.DELETE("/:id", controllers.SocialDelete)
+	}
 
 	router.Static("/public", "./templates")
 	router.GET("/", func(c *gin.Context) {

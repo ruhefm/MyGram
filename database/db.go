@@ -43,29 +43,3 @@ func UserRegister(register *models.Users) error {
 
 	return nil
 }
-
-// func GetUserByEmail(items string) (*models.Users, error) {
-// 	var request models.Users
-// 	db := GetDB()
-
-// 	if err := db.First(&request, "email = ?", items).Error; err != nil {
-// 		if errors.Is(err, gorm.ErrRecordNotFound) {
-// 			return nil, errors.New("email tidak ditemukan")
-// 		}
-// 		return nil, err
-// 	}
-// 	return &request, nil
-// }
-
-// func GetUserByUsername(items string) (*models.Users, error) {
-// 	var request models.Users
-// 	db := GetDB()
-
-// 	if err := db.First(&request, "username = ?", items).Error; err != nil {
-// 		if errors.Is(err, gorm.ErrRecordNotFound) {
-// 			return nil, errors.New("user tidak ditemukan")
-// 		}
-// 		return nil, err
-// 	}
-// 	return &request, nil
-// }

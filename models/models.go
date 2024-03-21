@@ -1,6 +1,7 @@
 package models
 
 import (
+	"errors"
 	"mygram/helpers"
 	"time"
 
@@ -8,31 +9,24 @@ import (
 	"gorm.io/gorm"
 )
 
-type Social_Medias struct {
-	ID             uint      `json:"id" gorm:"primary_key;type:bigint"`
-	Name           string    `json:"name" gorm:"type:varchar(50);not null; default:null"`
-	SocialMediaURL string    `json:"social_media_url" gorm:"type:varchar(50);not null; default:null"`
-	UserID         uint      `json:"user_id" gorm:"type:bigint;not null; default:null"`
-	User           Users     `json:"user" gorm:"foreignkey:UserID"`
-	CreatedAt      time.Time `json:"created_at" gorm:"type:timestamp"`
-	UpdatedAt      time.Time `json:"updated_at" gorm:"type:timestamp"`
-}
-
 type Users struct {
 	ID              uint            `json:"id" gorm:"primary_key;type:bigint"`
-	Username        string          `json:"username" gorm:"unique;type:varchar(50);not null; default:null"`
-	Email           string          `json:"email" form:"email"  gorm:"unique;type:varchar(150);not null; default:null;uniqueIndex"`
-	Password        string          `json:"password" form:"password"  gorm:"type:text;not null; default:null"`
-	Age             uint            `json:"age" gorm:"type:int;not null; default:null"`
+	Username        string          `json:"username" valid:"alphanum,minstringlength(3)" gorm:"unique;type:varchar(50);not null; default:null"`
+	Email           string          `json:"email" form:"email" valid:"email"  gorm:"unique;type:varchar(150);not null; default:null;uniqueIndex"`
+	Password        string          `json:"password" form:"password" valid:"minstringlength(6)" gorm:"type:text;not null; default:null"`
+	Age             uint            `json:"age" gorm: valid:"min:9" "type:int;not null; default:null"`
 	ProfileImageURL string          `json:"profile_image_url" valid:"url" gorm:"type:text"`
 	CreatedAt       time.Time       `json:"created_at" gorm:"type:timestamp"`
 	UpdatedAt       time.Time       `json:"updated_at" gorm:"type:timestamp"`
-	SocialMedias    []Social_Medias `json:"social_medias" gorm:"foreignkey:UserID"`
-	Photos          []Photos        `json:"photos" gorm:"foreignkey:UserID"`
-	Comments        []Comments      `json:"comments" gorm:"foreignkey:UserID"`
+	SocialMedias    []Social_Medias `json:"social_medias" gorm:"foreignkey:UserID; constraint:OnDelete:CASCADE"`
+	Photos          []Photos        `json:"photos" gorm:"foreignkey:UserID; constraint:OnDelete:CASCADE"`
+	Comments        []Comments      `json:"comments" gorm:"foreignkey:UserID; constraint:OnDelete:CASCADE"`
 }
 
 func (user *Users) BeforeCreate(tx *gorm.DB) (err error) {
+	if user.Age <= 8 {
+		return errors.New("minimal sembilan tahun")
+	}
 	_, errCreate := govalidator.ValidateStruct(user)
 	if errCreate != nil {
 		err = errCreate
@@ -90,6 +84,25 @@ type Comments struct {
 }
 
 func (user *Comments) BeforeCreate(tx *gorm.DB) (err error) {
+	_, errCreate := govalidator.ValidateStruct(user)
+	if errCreate != nil {
+		err = errCreate
+		return
+	}
+	return nil
+}
+
+type Social_Medias struct {
+	ID             uint      `json:"id" gorm:"primary_key;type:bigint"`
+	Name           string    `json:"name" gorm:"type:varchar(50);not null; default:null"`
+	SocialMediaURL string    `json:"social_media_url" valid:"url" gorm:"type:varchar(50);not null; default:null"`
+	UserID         uint      `json:"user_id" gorm:"type:bigint;not null; default:null"`
+	User           Users     `json:"user" gorm:"foreignkey:ID; references:UserID" `
+	CreatedAt      time.Time `json:"created_at" gorm:"type:timestamp"`
+	UpdatedAt      time.Time `json:"updated_at" gorm:"type:timestamp"`
+}
+
+func (user *Social_Medias) BeforeCreate(tx *gorm.DB) (err error) {
 	_, errCreate := govalidator.ValidateStruct(user)
 	if errCreate != nil {
 		err = errCreate
