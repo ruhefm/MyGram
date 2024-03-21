@@ -57,7 +57,7 @@ type Photos struct {
 	Caption   string     `json:"caption" gorm:"type:varchar(200);"`
 	PhotoURL  string     `json:"photo_url" valid:"url" gorm:"type:text;not null; default:null"`
 	UserID    uint       `json:"user_id" gorm:"type:bigint;not null; default:null"`
-	User      Users      `json:"user" gorm:"foreignKey:ID; references:UserID"`
+	User      Users      `json:"user" gorm:"foreignKey:UserID;"`
 	CreatedAt time.Time  `json:"created_at" gorm:"type:timestamp"`
 	UpdatedAt time.Time  `json:"updated_at" gorm:"type:timestamp"`
 	Comments  []Comments `json:"comments" gorm:"foreignkey:PhotoID"`
@@ -79,8 +79,8 @@ type Comments struct {
 	Message   string    `json:"message" gorm:"type:varchar(200);"`
 	CreatedAt time.Time `json:"created_at" gorm:"type:timestamp"`
 	UpdatedAt time.Time `json:"updated_at" gorm:"type:timestamp"`
-	User      Users     `json:"user" gorm:"foreignKey:ID; references:UserID"`
-	Photo     Photos    `json:"photo" gorm:"foreignKey:ID; references:PhotoID"`
+	User      Users     `json:"user" gorm:"foreignKey:UserID;"`
+	Photo     Photos    `json:"photo" gorm:"foreignKey:ID; "`
 }
 
 func (user *Comments) BeforeCreate(tx *gorm.DB) (err error) {
@@ -97,7 +97,7 @@ type Social_Medias struct {
 	Name           string    `json:"name" gorm:"type:varchar(50);not null; default:null"`
 	SocialMediaURL string    `json:"social_media_url" valid:"url" gorm:"type:varchar(50);not null; default:null"`
 	UserID         uint      `json:"user_id" gorm:"type:bigint;not null; default:null"`
-	User           Users     `json:"user" gorm:"foreignkey:ID; references:UserID" `
+	User           Users     `json:"user" gorm:"foreignkey:UserID;" `
 	CreatedAt      time.Time `json:"created_at" gorm:"type:timestamp"`
 	UpdatedAt      time.Time `json:"updated_at" gorm:"type:timestamp"`
 }
