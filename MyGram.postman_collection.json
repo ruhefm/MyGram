@@ -1,0 +1,1811 @@
+{
+	"info": {
+		"_postman_id": "b34f811e-c093-4670-9f99-3ee2e8edb704",
+		"name": "MyGram",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31707545"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"orangxtasmbsah@gm.com\",\r\n  \"username\": \"orxangkesdsua\",\r\n  \"age\": 9,\r\n  \"password\": \"euykeurnaon\",\r\n  \"profile_image_url\": \"https://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/register/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"register",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "minimal 9 tahun",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"Ayanaon\",\r\n  \"username\": \"ay\",\r\n  \"age\": 8,\r\n  \"password\": \"euy12\",\r\n  \"profile_image_url\": \"htsxtps://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/users/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"users",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 05:47:15 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "35"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"minimal sembilan tahun.\"\n}"
+						},
+						{
+							"name": "email, password, url, username, tidak valid",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"Ayanaon@naon\",\r\n  \"username\": \"ay\",\r\n  \"age\": 9,\r\n  \"password\": \"euy12\",\r\n  \"profile_image_url\": \"htsxtps://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/users/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"users",
+										"register"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 05:49:13 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "307"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"email: Ayanaon@naon does not validate as email;password: euy12 does not validate as minstringlength(6);profile_image_url: htsxtps://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png does not validate as url;username: ay does not validate as minstringlength(3)\"\n}"
+						},
+						{
+							"name": "success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"Ayanaon@naon.euy\",\r\n  \"username\": \"ayanaoniyeuteh\",\r\n  \"age\": 9,\r\n  \"password\": \"euykeurnaon\",\r\n  \"profile_image_url\": \"https://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/users/register/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"users",
+										"register",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 06:12:37 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "187"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 3,\n    \"email\": \"Ayanaon@naon.euy\",\n    \"username\": \"ayanaoniyeuteh\",\n    \"age\": 9,\n    \"profile_image_url\": \"https://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\"\n}"
+						},
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"herupurnama@golang.com\",\r\n  \"username\": \"heru\",\r\n  \"age\": 9,\r\n  \"password\": \"herupurnama@golang.com\",\r\n  \"profile_image_url\": \"https://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/users/register/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"users",
+										"register",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 08:43:41 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "184"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 10,\n    \"email\": \"herupurnama@golang.com\",\n    \"username\": \"heru\",\n    \"age\": 9,\n    \"profile_image_url\": \"https://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\"\n}"
+						}
+					]
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"orangxtasmbsah@gm.com\",\r\n  \"username\": \"orxangkesdsua\",\r\n  \"age\": 9,\r\n  \"password\": \"euykeurnaon\",\r\n  \"profile_image_url\": \"https://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjgsImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDEwOjQyOjExLjAwNjM3NVoiLCJlbWFpbCI6IlN1bWFuZGFyQG5hcmF5YS5jby5pZCIsImlkIjo2MiwicHJvZmlsZV9pbWFnZV91cmwiOiJodHRwczovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9pZC90aHVtYi9jL2NjL1BUX1BQX2xvZ28uc3ZnLzEyMDBweC1QVF9QUF9sb2dvLnN2Zy5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyNC0wMy0yMVQxMDo0MjoxMS4wMDYzNzVaIiwidXNlcm5hbWUiOiJTdW1hbmRhciJ9.BO_9dgLCQLcTIebAVD2vBPheLScKTVfr2NsXi_6XruA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"\",\r\n  \"username\": \"\",\r\n  \"age\":9,\r\n  \"password\": \"Lestrange\",\r\n  \"profile_image_url\": \"https://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "photos",
+			"item": [
+				{
+					"name": "photos",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQwOjUyLjgzMDk5OVoiLCJlbWFpbCI6Im9yYW5neHRhc21ic2FoQGdtLmNvbSIsImlkIjozLCJwcm9maWxlX2ltYWdlX3VybCI6Imh0dHBzOi8vdXBsb2FkLndpa2ltZWRpYS5vcmcvd2lraXBlZGlhL2lkL3RodW1iL2MvY2MvUFRfUFBfbG9nby5zdmcvMTIwMHB4LVBUX1BQX2xvZ28uc3ZnLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQwOjUyLjgzMDk5OVoiLCJ1c2VybmFtZSI6Im9yeGFuZ2tlc2RzdWEifQ.e4Rq7nnKiEH2U1n6zUASfH4DB7Z6fJKTU0rpNRALFuI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"caption\": \"sdde\",\r\n  \"title\": \"Seee\",\r\n  \"photo_url\": \"http://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/photos/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photos",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJlbWFpbCI6Im9yYW5neHRhc21ic2FoQGdtLmNvbSIsImlkIjoxLCJwcm9maWxlX2ltYWdlX3VybCI6Imh0dHBzOi8vdXBsb2FkLndpa2ltZWRpYS5vcmcvd2lraXBlZGlhL2lkL3RodW1iL2MvY2MvUFRfUFBfbG9nby5zdmcvMTIwMHB4LVBUX1BQX2xvZ28uc3ZnLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJ1c2VybmFtZSI6Im9yeGFuZ2tlc2RzdWEifQ.phmKX5WH0Mjk--aswxHMOrGEfvyh9DOD7JeR7FFpLwc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"caption\": \"sdde\",\r\n  \"title\": \"Seee\",\r\n  \"photo_url\": \"http://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/photos/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"photos",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:47:40 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "159"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 6,\n    \"caption\": \"sdde\",\n    \"title\": \"Seee\",\n    \"photo_url\": \"http://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\",\n    \"user_id\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "photos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/photos/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photos",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/photos/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"photos",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:47:48 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "941"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 3,\n        \"caption\": \"sdde\",\n        \"title\": \"Seee\",\n        \"photo_url\": \"http://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\",\n        \"user_id\": 1,\n        \"user\": {\n            \"id\": 1,\n            \"email\": \"orangxtasmbsah@gm.com\",\n            \"username\": \"orxangkesdsua\"\n        }\n    },\n    {\n        \"id\": 4,\n        \"caption\": \"sdde\",\n        \"title\": \"Seee\",\n        \"photo_url\": \"http://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\",\n        \"user_id\": 1,\n        \"user\": {\n            \"id\": 1,\n            \"email\": \"orangxtasmbsah@gm.com\",\n            \"username\": \"orxangkesdsua\"\n        }\n    },\n    {\n        \"id\": 5,\n        \"caption\": \"sdde\",\n        \"title\": \"Seee\",\n        \"photo_url\": \"http://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\",\n        \"user_id\": 1,\n        \"user\": {\n            \"id\": 1,\n            \"email\": \"orangxtasmbsah@gm.com\",\n            \"username\": \"orxangkesdsua\"\n        }\n    },\n    {\n        \"id\": 6,\n        \"caption\": \"sdde\",\n        \"title\": \"Seee\",\n        \"photo_url\": \"http://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\",\n        \"user_id\": 1,\n        \"user\": {\n            \"id\": 1,\n            \"email\": \"orangxtasmbsah@gm.com\",\n            \"username\": \"orxangkesdsua\"\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "photos/:id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/photos/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photos",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/photos/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"photos",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:47:45 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "234"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 3,\n    \"caption\": \"sdde\",\n    \"title\": \"Seee\",\n    \"photo_url\": \"http://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\",\n    \"user_id\": 1,\n    \"user\": {\n        \"id\": 1,\n        \"email\": \"orangxtasmbsah@gm.com\",\n        \"username\": \"orxangkesdsua\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "photos/:id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJlbWFpbCI6Im9yYW5neHRhc21ic2FoQGdtLmNvbSIsImlkIjoxLCJwcm9maWxlX2ltYWdlX3VybCI6Imh0dHBzOi8vdXBsb2FkLndpa2ltZWRpYS5vcmcvd2lraXBlZGlhL2lkL3RodW1iL2MvY2MvUFRfUFBfbG9nby5zdmcvMTIwMHB4LVBUX1BQX2xvZ28uc3ZnLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJ1c2VybmFtZSI6Im9yeGFuZ2tlc2RzdWEifQ.phmKX5WH0Mjk--aswxHMOrGEfvyh9DOD7JeR7FFpLwc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\": \"string kuadrat\",\r\n  \"caption\": \"string\",\r\n  \"photo_url\": \"string.com.id\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/photos/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photos",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJlbWFpbCI6Im9yYW5neHRhc21ic2FoQGdtLmNvbSIsImlkIjoxLCJwcm9maWxlX2ltYWdlX3VybCI6Imh0dHBzOi8vdXBsb2FkLndpa2ltZWRpYS5vcmcvd2lraXBlZGlhL2lkL3RodW1iL2MvY2MvUFRfUFBfbG9nby5zdmcvMTIwMHB4LVBUX1BQX2xvZ28uc3ZnLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJ1c2VybmFtZSI6Im9yeGFuZ2tlc2RzdWEifQ.phmKX5WH0Mjk--aswxHMOrGEfvyh9DOD7JeR7FFpLwc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"string kuadrat\",\r\n  \"caption\": \"string\",\r\n  \"photo_url\": \"string.com.id\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/photos/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"photos",
+										"3"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:48:17 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "92"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 3,\n    \"caption\": \"string\",\n    \"title\": \"string kuadrat\",\n    \"photo_url\": \"string.com.id\",\n    \"user_id\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "photos/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJlbWFpbCI6Im9yYW5neHRhc21ic2FoQGdtLmNvbSIsImlkIjoxLCJwcm9maWxlX2ltYWdlX3VybCI6Imh0dHBzOi8vdXBsb2FkLndpa2ltZWRpYS5vcmcvd2lraXBlZGlhL2lkL3RodW1iL2MvY2MvUFRfUFBfbG9nby5zdmcvMTIwMHB4LVBUX1BQX2xvZ28uc3ZnLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJ1c2VybmFtZSI6Im9yeGFuZ2tlc2RzdWEifQ.phmKX5WH0Mjk--aswxHMOrGEfvyh9DOD7JeR7FFpLwc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/photos/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photos",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "\"OK\"",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJlbWFpbCI6Im9yYW5neHRhc21ic2FoQGdtLmNvbSIsImlkIjoxLCJwcm9maWxlX2ltYWdlX3VybCI6Imh0dHBzOi8vdXBsb2FkLndpa2ltZWRpYS5vcmcvd2lraXBlZGlhL2lkL3RodW1iL2MvY2MvUFRfUFBfbG9nby5zdmcvMTIwMHB4LVBUX1BQX2xvZ28uc3ZnLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJ1c2VybmFtZSI6Im9yeGFuZ2tlc2RzdWEifQ.phmKX5WH0Mjk--aswxHMOrGEfvyh9DOD7JeR7FFpLwc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/photos/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"photos",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:48:40 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4"
+								}
+							],
+							"cookie": [],
+							"body": "\"OK\""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "comments",
+			"item": [
+				{
+					"name": "comments",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJlbWFpbCI6Im9yYW5neHRhc21ic2FoQGdtLmNvbSIsImlkIjoxLCJwcm9maWxlX2ltYWdlX3VybCI6Imh0dHBzOi8vdXBsb2FkLndpa2ltZWRpYS5vcmcvd2lraXBlZGlhL2lkL3RodW1iL2MvY2MvUFRfUFBfbG9nby5zdmcvMTIwMHB4LVBUX1BQX2xvZ28uc3ZnLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJ1c2VybmFtZSI6Im9yeGFuZ2tlc2RzdWEifQ.phmKX5WH0Mjk--aswxHMOrGEfvyh9DOD7JeR7FFpLwc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"message\": \"Ahhh cute sangat\",\r\n  \"photo_id\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/comments/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"comments",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJlbWFpbCI6Im9yYW5neHRhc21ic2FoQGdtLmNvbSIsImlkIjoxLCJwcm9maWxlX2ltYWdlX3VybCI6Imh0dHBzOi8vdXBsb2FkLndpa2ltZWRpYS5vcmcvd2lraXBlZGlhL2lkL3RodW1iL2MvY2MvUFRfUFBfbG9nby5zdmcvMTIwMHB4LVBUX1BQX2xvZ28uc3ZnLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJ1c2VybmFtZSI6Im9yeGFuZ2tlc2RzdWEifQ.phmKX5WH0Mjk--aswxHMOrGEfvyh9DOD7JeR7FFpLwc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"message\": \"Ahhh cute sangat kamu hebat\",\r\n  \"photo_id\": 3\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/comments/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"comments",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:51:19 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "73"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 6,\n    \"message\": \"Ahhh cute sangat kamu hebat\",\n    \"photo_id\": 3,\n    \"user_id\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "comments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/comments/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"comments",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/comments/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"comments",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:51:45 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "729"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 4,\n        \"message\": \"Ahhh cute sangat\",\n        \"photo_id\": 3,\n        \"user_id\": 1,\n        \"user\": {\n            \"id\": 1,\n            \"email\": \"orangxtasmbsah@gm.com\",\n            \"username\": \"orxangkesdsua\"\n        },\n        \"photo\": {\n            \"id\": 3,\n            \"caption\": \"string\",\n            \"title\": \"string kuadrat\",\n            \"photo_url\": \"string.com.id\",\n            \"user_id\": 1\n        }\n    },\n    {\n        \"id\": 5,\n        \"message\": \"Ahhh cute sangat\",\n        \"photo_id\": 3,\n        \"user_id\": 1,\n        \"user\": {\n            \"id\": 1,\n            \"email\": \"orangxtasmbsah@gm.com\",\n            \"username\": \"orxangkesdsua\"\n        },\n        \"photo\": {\n            \"id\": 3,\n            \"caption\": \"string\",\n            \"title\": \"string kuadrat\",\n            \"photo_url\": \"string.com.id\",\n            \"user_id\": 1\n        }\n    },\n    {\n        \"id\": 6,\n        \"message\": \"Ahhh cute sangat kamu hebat\",\n        \"photo_id\": 3,\n        \"user_id\": 1,\n        \"user\": {\n            \"id\": 1,\n            \"email\": \"orangxtasmbsah@gm.com\",\n            \"username\": \"orxangkesdsua\"\n        },\n        \"photo\": {\n            \"id\": 3,\n            \"caption\": \"string\",\n            \"title\": \"string kuadrat\",\n            \"photo_url\": \"string.com.id\",\n            \"user_id\": 1\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "comments/:id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDEwOjQyOjExLjAwNjM3NVoiLCJlbWFpbCI6IlN1bWFuZGFyQG5hcmF5YS5jby5pZCIsImlkIjo2MiwicHJvZmlsZV9pbWFnZV91cmwiOiJodHRwczovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9pZC90aHVtYi9jL2NjL1BUX1BQX2xvZ28uc3ZnLzEyMDBweC1QVF9QUF9sb2dvLnN2Zy5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyNC0wMy0yMVQxMTozMTozOS43ODY3NTFaIiwidXNlcm5hbWUiOiJTdW1hbmRhciJ9.vJ_-aQeF4uT0MiFy6XHzh63eJyWJDslWu8dcrBG9XGc",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/comments/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"comments",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDEwOjQyOjExLjAwNjM3NVoiLCJlbWFpbCI6IlN1bWFuZGFyQG5hcmF5YS5jby5pZCIsImlkIjo2MiwicHJvZmlsZV9pbWFnZV91cmwiOiJodHRwczovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9pZC90aHVtYi9jL2NjL1BUX1BQX2xvZ28uc3ZnLzEyMDBweC1QVF9QUF9sb2dvLnN2Zy5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyNC0wMy0yMVQxMTozMTozOS43ODY3NTFaIiwidXNlcm5hbWUiOiJTdW1hbmRhciJ9.vJ_-aQeF4uT0MiFy6XHzh63eJyWJDslWu8dcrBG9XGc",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/comments/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"comments",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:53:22 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "238"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"message\": \"Ahhh cute sangat\",\n    \"photo_id\": 3,\n    \"user_id\": 1,\n    \"user\": {\n        \"id\": 1,\n        \"email\": \"orangxtasmbsah@gm.com\",\n        \"username\": \"orxangkesdsua\"\n    },\n    \"photo\": {\n        \"id\": 3,\n        \"caption\": \"string\",\n        \"title\": \"string kuadrat\",\n        \"photo_url\": \"string.com.id\",\n        \"user_id\": 1\n    }\n}"
+						},
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDEwOjQyOjExLjAwNjM3NVoiLCJlbWFpbCI6IlN1bWFuZGFyQG5hcmF5YS5jby5pZCIsImlkIjo2MiwicHJvZmlsZV9pbWFnZV91cmwiOiJodHRwczovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9pZC90aHVtYi9jL2NjL1BUX1BQX2xvZ28uc3ZnLzEyMDBweC1QVF9QUF9sb2dvLnN2Zy5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyNC0wMy0yMVQxMTozMTozOS43ODY3NTFaIiwidXNlcm5hbWUiOiJTdW1hbmRhciJ9.vJ_-aQeF4uT0MiFy6XHzh63eJyWJDslWu8dcrBG9XGc",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/comments/46",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"comments",
+										"46"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:53:40 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "30"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Comments not found\"\n}"
+						}
+					]
+				},
+				{
+					"name": "comments",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDEwOjQyOjExLjAwNjM3NVoiLCJlbWFpbCI6IlN1bWFuZGFyQG5hcmF5YS5jby5pZCIsImlkIjo2MiwicHJvZmlsZV9pbWFnZV91cmwiOiJodHRwczovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9pZC90aHVtYi9jL2NjL1BUX1BQX2xvZ28uc3ZnLzEyMDBweC1QVF9QUF9sb2dvLnN2Zy5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyNC0wMy0yMVQxMTozMTozOS43ODY3NTFaIiwidXNlcm5hbWUiOiJTdW1hbmRhciJ9.vJ_-aQeF4uT0MiFy6XHzh63eJyWJDslWu8dcrBG9XGc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"message\": \"Ahhh gajadi ss cute sangat\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/comments/3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"comments",
+								"3"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJlbWFpbCI6Im9yYW5neHRhc21ic2FoQGdtLmNvbSIsImlkIjoxLCJwcm9maWxlX2ltYWdlX3VybCI6Imh0dHBzOi8vdXBsb2FkLndpa2ltZWRpYS5vcmcvd2lraXBlZGlhL2lkL3RodW1iL2MvY2MvUFRfUFBfbG9nby5zdmcvMTIwMHB4LVBUX1BQX2xvZ28uc3ZnLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJ1c2VybmFtZSI6Im9yeGFuZ2tlc2RzdWEifQ.phmKX5WH0Mjk--aswxHMOrGEfvyh9DOD7JeR7FFpLwc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"message\": \"Ahhh gajadi ss cute sangat 2\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/comments/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"comments",
+										"4"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:55:37 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "74"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"message\": \"Ahhh gajadi ss cute sangat 2\",\n    \"photo_id\": 3,\n    \"user_id\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "comments/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDEwOjQyOjExLjAwNjM3NVoiLCJlbWFpbCI6IlN1bWFuZGFyQG5hcmF5YS5jby5pZCIsImlkIjo2MiwicHJvZmlsZV9pbWFnZV91cmwiOiJodHRwczovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9pZC90aHVtYi9jL2NjL1BUX1BQX2xvZ28uc3ZnLzEyMDBweC1QVF9QUF9sb2dvLnN2Zy5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyNC0wMy0yMVQxMTozMTozOS43ODY3NTFaIiwidXNlcm5hbWUiOiJTdW1hbmRhciJ9.vJ_-aQeF4uT0MiFy6XHzh63eJyWJDslWu8dcrBG9XGc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/comments/19",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"comments",
+								"19"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDEwOjQyOjExLjAwNjM3NVoiLCJlbWFpbCI6IlN1bWFuZGFyQG5hcmF5YS5jby5pZCIsImlkIjo2MiwicHJvZmlsZV9pbWFnZV91cmwiOiJodHRwczovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9pZC90aHVtYi9jL2NjL1BUX1BQX2xvZ28uc3ZnLzEyMDBweC1QVF9QUF9sb2dvLnN2Zy5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyNC0wMy0yMVQxMTozMTozOS43ODY3NTFaIiwidXNlcm5hbWUiOiJTdW1hbmRhciJ9.vJ_-aQeF4uT0MiFy6XHzh63eJyWJDslWu8dcrBG9XGc",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/comments/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"comments",
+										"5"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:55:59 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "27"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Data tidak ada!\"\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJlbWFpbCI6Im9yYW5neHRhc21ic2FoQGdtLmNvbSIsImlkIjoxLCJwcm9maWxlX2ltYWdlX3VybCI6Imh0dHBzOi8vdXBsb2FkLndpa2ltZWRpYS5vcmcvd2lraXBlZGlhL2lkL3RodW1iL2MvY2MvUFRfUFBfbG9nby5zdmcvMTIwMHB4LVBUX1BQX2xvZ28uc3ZnLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJ1c2VybmFtZSI6Im9yeGFuZ2tlc2RzdWEifQ.phmKX5WH0Mjk--aswxHMOrGEfvyh9DOD7JeR7FFpLwc",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/comments/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"comments",
+										"5"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:56:11 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4"
+								}
+							],
+							"cookie": [],
+							"body": "\"OK\""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "socialMedias",
+			"item": [
+				{
+					"name": "socialmedias",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDEwOjQyOjExLjAwNjM3NVoiLCJlbWFpbCI6IlN1bWFuZGFyQG5hcmF5YS5jby5pZCIsImlkIjo2MiwicHJvZmlsZV9pbWFnZV91cmwiOiJodHRwczovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9pZC90aHVtYi9jL2NjL1BUX1BQX2xvZ28uc3ZnLzEyMDBweC1QVF9QUF9sb2dvLnN2Zy5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyNC0wMy0yMVQxMTozMTozOS43ODY3NTFaIiwidXNlcm5hbWUiOiJTdW1hbmRhciJ9.vJ_-aQeF4uT0MiFy6XHzh63eJyWJDslWu8dcrBG9XGc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Apamaksud?\",\r\n  \"social_media_url\": \"15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/socialmedias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"socialmedias"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "201",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJlbWFpbCI6Im9yYW5neHRhc21ic2FoQGdtLmNvbSIsImlkIjoxLCJwcm9maWxlX2ltYWdlX3VybCI6Imh0dHBzOi8vdXBsb2FkLndpa2ltZWRpYS5vcmcvd2lraXBlZGlhL2lkL3RodW1iL2MvY2MvUFRfUFBfbG9nby5zdmcvMTIwMHB4LVBUX1BQX2xvZ28uc3ZnLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJ1c2VybmFtZSI6Im9yeGFuZ2tlc2RzdWEifQ.phmKX5WH0Mjk--aswxHMOrGEfvyh9DOD7JeR7FFpLwc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"ID Berapa\",\r\n  \"social_media_url\": \"www.15.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/socialmedias",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"socialmedias"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:56:38 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "71"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"ID Berapa\",\n    \"social_media_url\": \"www.15.com\",\n    \"user_id\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "socialmedias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/socialmedias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"socialmedias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "socialmedias/:id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDEwOjQyOjExLjAwNjM3NVoiLCJlbWFpbCI6IlN1bWFuZGFyQG5hcmF5YS5jby5pZCIsImlkIjo2MiwicHJvZmlsZV9pbWFnZV91cmwiOiJodHRwczovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9pZC90aHVtYi9jL2NjL1BUX1BQX2xvZ28uc3ZnLzEyMDBweC1QVF9QUF9sb2dvLnN2Zy5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyNC0wMy0yMVQxMTozMTozOS43ODY3NTFaIiwidXNlcm5hbWUiOiJTdW1hbmRhciJ9.vJ_-aQeF4uT0MiFy6XHzh63eJyWJDslWu8dcrBG9XGc",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/socialmedias/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"socialmedias",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDEwOjQyOjExLjAwNjM3NVoiLCJlbWFpbCI6IlN1bWFuZGFyQG5hcmF5YS5jby5pZCIsImlkIjo2MiwicHJvZmlsZV9pbWFnZV91cmwiOiJodHRwczovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9pZC90aHVtYi9jL2NjL1BUX1BQX2xvZ28uc3ZnLzEyMDBweC1QVF9QUF9sb2dvLnN2Zy5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyNC0wMy0yMVQxMTozMTozOS43ODY3NTFaIiwidXNlcm5hbWUiOiJTdW1hbmRhciJ9.vJ_-aQeF4uT0MiFy6XHzh63eJyWJDslWu8dcrBG9XGc",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/socialmedias/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"socialmedias",
+										"2"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:59:09 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "34"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Social Media not found\"\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDEwOjQyOjExLjAwNjM3NVoiLCJlbWFpbCI6IlN1bWFuZGFyQG5hcmF5YS5jby5pZCIsImlkIjo2MiwicHJvZmlsZV9pbWFnZV91cmwiOiJodHRwczovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9pZC90aHVtYi9jL2NjL1BUX1BQX2xvZ28uc3ZnLzEyMDBweC1QVF9QUF9sb2dvLnN2Zy5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyNC0wMy0yMVQxMTozMTozOS43ODY3NTFaIiwidXNlcm5hbWUiOiJTdW1hbmRhciJ9.vJ_-aQeF4uT0MiFy6XHzh63eJyWJDslWu8dcrBG9XGc",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/socialmedias/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"socialmedias",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:59:22 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "146"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"ID Berapa\",\n    \"social_media_url\": \"www.15.com\",\n    \"user_id\": 1,\n    \"user\": {\n        \"id\": 1,\n        \"email\": \"orangxtasmbsah@gm.com\",\n        \"username\": \"orxangkesdsua\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "socialmedias",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDEwOjQyOjExLjAwNjM3NVoiLCJlbWFpbCI6IlN1bWFuZGFyQG5hcmF5YS5jby5pZCIsImlkIjo2MiwicHJvZmlsZV9pbWFnZV91cmwiOiJodHRwczovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9pZC90aHVtYi9jL2NjL1BUX1BQX2xvZ28uc3ZnLzEyMDBweC1QVF9QUF9sb2dvLnN2Zy5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyNC0wMy0yMVQxMTozMTozOS43ODY3NTFaIiwidXNlcm5hbWUiOiJTdW1hbmRhciJ9.vJ_-aQeF4uT0MiFy6XHzh63eJyWJDslWu8dcrBG9XGc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"cuteboy\",\r\n  \"social_media_url\": \"www.cutboy.slash.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/socialmedias/4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"socialmedias",
+								"4"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDEwOjQyOjExLjAwNjM3NVoiLCJlbWFpbCI6IlN1bWFuZGFyQG5hcmF5YS5jby5pZCIsImlkIjo2MiwicHJvZmlsZV9pbWFnZV91cmwiOiJodHRwczovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9pZC90aHVtYi9jL2NjL1BUX1BQX2xvZ28uc3ZnLzEyMDBweC1QVF9QUF9sb2dvLnN2Zy5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyNC0wMy0yMVQxMTozMTozOS43ODY3NTFaIiwidXNlcm5hbWUiOiJTdW1hbmRhciJ9.vJ_-aQeF4uT0MiFy6XHzh63eJyWJDslWu8dcrBG9XGc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Sehat Banget\",\r\n  \"social_media_url\": \"sehat.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/socialmedias/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"socialmedias",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:58:04 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "47"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Social Media tidak ada yang berubah\"\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJlbWFpbCI6Im9yYW5neHRhc21ic2FoQGdtLmNvbSIsImlkIjoxLCJwcm9maWxlX2ltYWdlX3VybCI6Imh0dHBzOi8vdXBsb2FkLndpa2ltZWRpYS5vcmcvd2lraXBlZGlhL2lkL3RodW1iL2MvY2MvUFRfUFBfbG9nby5zdmcvMTIwMHB4LVBUX1BQX2xvZ28uc3ZnLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJ1c2VybmFtZSI6Im9yeGFuZ2tlc2RzdWEifQ.phmKX5WH0Mjk--aswxHMOrGEfvyh9DOD7JeR7FFpLwc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Sehat Banget\",\r\n  \"social_media_url\": \"www.sehat.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/socialmedias/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"socialmedias",
+										"2"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:59:51 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"Sehat Banget\",\n    \"social_media_url\": \"www.sehat.com\",\n    \"user_id\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "socialmedias/:id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDEwOjQyOjExLjAwNjM3NVoiLCJlbWFpbCI6IlN1bWFuZGFyQG5hcmF5YS5jby5pZCIsImlkIjo2MiwicHJvZmlsZV9pbWFnZV91cmwiOiJodHRwczovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9pZC90aHVtYi9jL2NjL1BUX1BQX2xvZ28uc3ZnLzEyMDBweC1QVF9QUF9sb2dvLnN2Zy5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyNC0wMy0yMVQxMTozMTozOS43ODY3NTFaIiwidXNlcm5hbWUiOiJTdW1hbmRhciJ9.vJ_-aQeF4uT0MiFy6XHzh63eJyWJDslWu8dcrBG9XGc",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/socialmedias/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"socialmedias",
+								"6"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "404",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDEwOjQyOjExLjAwNjM3NVoiLCJlbWFpbCI6IlN1bWFuZGFyQG5hcmF5YS5jby5pZCIsImlkIjo2MiwicHJvZmlsZV9pbWFnZV91cmwiOiJodHRwczovL3VwbG9hZC53aWtpbWVkaWEub3JnL3dpa2lwZWRpYS9pZC90aHVtYi9jL2NjL1BUX1BQX2xvZ28uc3ZnLzEyMDBweC1QVF9QUF9sb2dvLnN2Zy5wbmciLCJ1cGRhdGVkX2F0IjoiMjAyNC0wMy0yMVQxMTozMTozOS43ODY3NTFaIiwidXNlcm5hbWUiOiJTdW1hbmRhciJ9.vJ_-aQeF4uT0MiFy6XHzh63eJyWJDslWu8dcrBG9XGc",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/socialmedias/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"socialmedias",
+										"1"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:57:06 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "27"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"error\": \"Data tidak ada!\"\n}"
+						},
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZ2UiOjksImNyZWF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJlbWFpbCI6Im9yYW5neHRhc21ic2FoQGdtLmNvbSIsImlkIjoxLCJwcm9maWxlX2ltYWdlX3VybCI6Imh0dHBzOi8vdXBsb2FkLndpa2ltZWRpYS5vcmcvd2lraXBlZGlhL2lkL3RodW1iL2MvY2MvUFRfUFBfbG9nby5zdmcvMTIwMHB4LVBUX1BQX2xvZ28uc3ZnLnBuZyIsInVwZGF0ZWRfYXQiOiIyMDI0LTAzLTIxVDE0OjQ2OjQ0LjM4MDE5N1oiLCJ1c2VybmFtZSI6Im9yeGFuZ2tlc2RzdWEifQ.phmKX5WH0Mjk--aswxHMOrGEfvyh9DOD7JeR7FFpLwc",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/socialmedias/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"socialmedias",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:57:36 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4"
+								}
+							],
+							"cookie": [],
+							"body": "\"OK\""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "endCollection",
+			"item": [
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "photos Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/photos/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"photos",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/photos/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"photos",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:47:48 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "941"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 3,\n        \"caption\": \"sdde\",\n        \"title\": \"Seee\",\n        \"photo_url\": \"http://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\",\n        \"user_id\": 1,\n        \"user\": {\n            \"id\": 1,\n            \"email\": \"orangxtasmbsah@gm.com\",\n            \"username\": \"orxangkesdsua\"\n        }\n    },\n    {\n        \"id\": 4,\n        \"caption\": \"sdde\",\n        \"title\": \"Seee\",\n        \"photo_url\": \"http://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\",\n        \"user_id\": 1,\n        \"user\": {\n            \"id\": 1,\n            \"email\": \"orangxtasmbsah@gm.com\",\n            \"username\": \"orxangkesdsua\"\n        }\n    },\n    {\n        \"id\": 5,\n        \"caption\": \"sdde\",\n        \"title\": \"Seee\",\n        \"photo_url\": \"http://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\",\n        \"user_id\": 1,\n        \"user\": {\n            \"id\": 1,\n            \"email\": \"orangxtasmbsah@gm.com\",\n            \"username\": \"orxangkesdsua\"\n        }\n    },\n    {\n        \"id\": 6,\n        \"caption\": \"sdde\",\n        \"title\": \"Seee\",\n        \"photo_url\": \"http://upload.wikimedia.org/wikipedia/id/thumb/c/cc/PT_PP_logo.svg/1200px-PT_PP_logo.svg.png\",\n        \"user_id\": 1,\n        \"user\": {\n            \"id\": 1,\n            \"email\": \"orangxtasmbsah@gm.com\",\n            \"username\": \"orxangkesdsua\"\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "comments Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/comments/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"comments",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "200",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/comments/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"comments",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Mar 2024 07:51:45 GMT"
+								},
+								{
+									"key": "Content-Length",
+									"value": "729"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 4,\n        \"message\": \"Ahhh cute sangat\",\n        \"photo_id\": 3,\n        \"user_id\": 1,\n        \"user\": {\n            \"id\": 1,\n            \"email\": \"orangxtasmbsah@gm.com\",\n            \"username\": \"orxangkesdsua\"\n        },\n        \"photo\": {\n            \"id\": 3,\n            \"caption\": \"string\",\n            \"title\": \"string kuadrat\",\n            \"photo_url\": \"string.com.id\",\n            \"user_id\": 1\n        }\n    },\n    {\n        \"id\": 5,\n        \"message\": \"Ahhh cute sangat\",\n        \"photo_id\": 3,\n        \"user_id\": 1,\n        \"user\": {\n            \"id\": 1,\n            \"email\": \"orangxtasmbsah@gm.com\",\n            \"username\": \"orxangkesdsua\"\n        },\n        \"photo\": {\n            \"id\": 3,\n            \"caption\": \"string\",\n            \"title\": \"string kuadrat\",\n            \"photo_url\": \"string.com.id\",\n            \"user_id\": 1\n        }\n    },\n    {\n        \"id\": 6,\n        \"message\": \"Ahhh cute sangat kamu hebat\",\n        \"photo_id\": 3,\n        \"user_id\": 1,\n        \"user\": {\n            \"id\": 1,\n            \"email\": \"orangxtasmbsah@gm.com\",\n            \"username\": \"orxangkesdsua\"\n        },\n        \"photo\": {\n            \"id\": 3,\n            \"caption\": \"string\",\n            \"title\": \"string kuadrat\",\n            \"photo_url\": \"string.com.id\",\n            \"user_id\": 1\n        }\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "socialmedias Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/socialmedias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"socialmedias"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
