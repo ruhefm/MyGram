@@ -50,7 +50,7 @@ type CommentsResponse struct {
 func UserRegister(c *gin.Context) {
 	var newUser models.Users
 
-	if err := c.BindJSON(&newUser); err != nil {
+	if err := c.Bind(&newUser); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -101,7 +101,7 @@ func UserRegister(c *gin.Context) {
 
 func UserLogin(c *gin.Context) {
 	var request models.LoginRequest
-	if err := c.BindJSON(&request); err != nil {
+	if err := c.Bind(&request); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -115,8 +115,9 @@ func UserLogin(c *gin.Context) {
 		})
 		return
 	}
-
-	if !helpers.CompareDong([]byte(user.Password), []byte(request.Password)) {
+	userPassword := user.Password
+	requestPassword := request.Password
+	if !helpers.CompareDong([]byte(userPassword), []byte(requestPassword)) {
 		c.JSON(http.StatusUnauthorized, gin.H{
 			"error":   "Unauthorized",
 			"message": "invalid email/password",
@@ -130,14 +131,14 @@ func UserLogin(c *gin.Context) {
 
 func UserUpdate(c *gin.Context) {
 	var request models.Users
-	if err := c.BindJSON(&request); err != nil {
+	if err := c.Bind(&request); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
 	userData := c.MustGet("userData").(jwt.MapClaims)
 	userID := uint(userData["id"].(float64))
-
+	db := database.GetDB()
 	_, errCreate := govalidator.ValidateStruct(request)
 	if errCreate != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": errCreate.Error()})
@@ -150,7 +151,6 @@ func UserUpdate(c *gin.Context) {
 	if request.Password != "" {
 		request.Password = helpers.HashDong(request.Password)
 	}
-	db := database.GetDB()
 	if err := db.Model(&models.Users{}).Where("id = ?", userID).Updates(request).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return

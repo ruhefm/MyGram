@@ -37,8 +37,8 @@ func (user *Users) BeforeCreate(tx *gorm.DB) (err error) {
 }
 
 type LoginRequest struct {
-	Email    string `json:"email" valid:"required, email" binding:"required"`
-	Password string `json:"password" valid:"required,minstringlength(6)" binding:"required"`
+	Email    string `json:"email" valid:"required, email" `
+	Password string `json:"password" valid:"required, minstringlength(6)" `
 }
 
 type Photos struct {

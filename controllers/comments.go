@@ -40,7 +40,7 @@ func CommentPost(c *gin.Context) {
 
 	var newComment models.Comments
 
-	if err := c.BindJSON(&newComment); err != nil {
+	if err := c.Bind(&newComment); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -122,21 +122,19 @@ func CommentUpdate(c *gin.Context) {
 		return
 	}
 	var comment models.Comments
-	if err := c.BindJSON(&comment); err != nil {
+	if err := c.Bind(&comment); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
 	userData := c.MustGet("userData").(jwt.MapClaims)
 	userID := uint(userData["id"].(float64))
-
+	db := database.GetDB()
 	_, errCreate := govalidator.ValidateStruct(comment)
 	if errCreate != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": errCreate.Error()})
 		return
 	}
-
-	db := database.GetDB()
 
 	result := db.Model(&models.Comments{}).Where("user_id = ?", userID).Where("id = ?", idConvert).Updates(comment)
 

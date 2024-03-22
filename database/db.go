@@ -18,6 +18,16 @@ var (
 	err      error
 )
 
+// var (
+// 	host     = "localhost"
+// 	username = "postgres"
+// 	password = "test123456"
+// 	dbName   = "db-go-sql"
+// 	port     = 5432
+// 	db       *gorm.DB
+// 	err      error
+// )
+
 func StartDB() {
 	config := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%v sslmode=disable TimeZone=Asia/Jakarta", host, username, password, dbName, port)
 	db, err = gorm.Open(postgres.Open(config), &gorm.Config{})

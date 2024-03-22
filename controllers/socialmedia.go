@@ -31,7 +31,7 @@ func SocialPost(c *gin.Context) {
 
 	var newComment models.Social_Medias
 
-	if err := c.BindJSON(&newComment); err != nil {
+	if err := c.Bind(&newComment); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -111,7 +111,7 @@ func SocialUpdate(c *gin.Context) {
 		return
 	}
 	var comment models.Social_Medias
-	if err := c.BindJSON(&comment); err != nil {
+	if err := c.Bind(&comment); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}

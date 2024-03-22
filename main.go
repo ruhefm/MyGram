@@ -16,10 +16,10 @@ package main
 import (
 	"mygram/database"
 	"mygram/routers"
-	"os"
 )
 
-var PORT = os.Getenv("PORT")
+// var PORT = os.Getenv("PORT")
+var PORT = "8080"
 
 func main() {
 	database.StartDB()

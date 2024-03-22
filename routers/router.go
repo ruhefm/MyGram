@@ -3,7 +3,6 @@ package routers
 import (
 	"mygram/controllers"
 	"mygram/middlewares"
-	"net/http"
 
 	"github.com/gin-gonic/gin"
 
@@ -17,10 +16,13 @@ func StartServer() *gin.Engine {
 	{
 
 		usersRoute.POST("/register", controllers.UserRegister)
+		// usersRoute.GET("/register", func(c *gin.Context) {
+		// 	c.HTML(http.StatusOK, "templates/register.html", gin.H{})
+		// })
 		usersRoute.POST("/login", controllers.UserLogin)
-		usersRoute.GET("/login", func(c *gin.Context) {
-			c.HTML(http.StatusOK, "login.html", gin.H{})
-		})
+		// usersRoute.GET("/login", func(c *gin.Context) {
+		// 	c.HTML(http.StatusOK, "templates/login.html", gin.H{})
+		// })
 		usersRoute.Use(middlewares.Authentication())
 		usersRoute.PUT("/", controllers.UserUpdate)
 		usersRoute.DELETE("/", controllers.UserDelete)
@@ -56,7 +58,16 @@ func StartServer() *gin.Engine {
 
 	router.Static("/public", "./templates")
 	router.GET("/", func(c *gin.Context) {
-		c.File("./templates/test.html")
+		c.File("./templates/landing.html")
+	})
+	router.GET("/vue", func(c *gin.Context) {
+		c.File("./templates/dist/index.html")
+	})
+	router.GET("/register", func(c *gin.Context) {
+		c.File("./templates/dist/register.html")
+	})
+	router.GET("/login", func(c *gin.Context) {
+		c.File("./templates/dist/login.html")
 	})
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	router.GET("/docs/swagger.json", func(c *gin.Context) {
