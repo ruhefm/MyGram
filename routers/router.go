@@ -16,13 +16,7 @@ func StartServer() *gin.Engine {
 	{
 
 		usersRoute.POST("/register", controllers.UserRegister)
-		// usersRoute.GET("/register", func(c *gin.Context) {
-		// 	c.HTML(http.StatusOK, "templates/register.html", gin.H{})
-		// })
 		usersRoute.POST("/login", controllers.UserLogin)
-		// usersRoute.GET("/login", func(c *gin.Context) {
-		// 	c.HTML(http.StatusOK, "templates/login.html", gin.H{})
-		// })
 		usersRoute.Use(middlewares.Authentication())
 		usersRoute.PUT("/", controllers.UserUpdate)
 		usersRoute.DELETE("/", controllers.UserDelete)
@@ -48,9 +42,9 @@ func StartServer() *gin.Engine {
 	}
 	socialRoute := router.Group("/socialmedias")
 	{
+		socialRoute.Use(middlewares.Authentication())
 		socialRoute.GET("/", controllers.SocialList)
 		socialRoute.GET("/:id", controllers.SocialListByID)
-		socialRoute.Use(middlewares.Authentication())
 		socialRoute.POST("/", controllers.SocialPost)
 		socialRoute.PUT("/:id", controllers.SocialUpdate)
 		socialRoute.DELETE("/:id", controllers.SocialDelete)
