@@ -118,15 +118,12 @@ func SocialUpdate(c *gin.Context) {
 
 	userData := c.MustGet("userData").(jwt.MapClaims)
 	userID := uint(userData["id"].(float64))
-
+	db := database.GetDB()
 	_, errCreate := govalidator.ValidateStruct(comment)
 	if errCreate != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": errCreate.Error()})
 		return
 	}
-
-	db := database.GetDB()
-
 	result := db.Model(&models.Social_Medias{}).Where("user_id = ?", userID).Where("id = ?", idConvert).Updates(comment)
 
 	if result.RowsAffected == 0 {

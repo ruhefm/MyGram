@@ -17,7 +17,7 @@ func PhotoUpload(c *gin.Context) {
 
 	var newPhoto models.Photos
 
-	if err := c.BindJSON(&newPhoto); err != nil {
+	if err := c.Bind(&newPhoto); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
@@ -136,21 +136,20 @@ func PhotoUpdate(c *gin.Context) {
 		return
 	}
 	var request models.Photos
-	if err := c.BindJSON(&request); err != nil {
+	if err := c.Bind(&request); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
 	userData := c.MustGet("userData").(jwt.MapClaims)
 	userID := uint(userData["id"].(float64))
-
+	db := database.GetDB()
 	_, errCreate := govalidator.ValidateStruct(request)
 	if errCreate != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": errCreate.Error()})
 		return
 	}
 
-	db := database.GetDB()
 	result := db.Model(&models.Photos{}).Where("user_id = ?", userID).Where("id = ?", idConvert).Updates(request)
 	if result.RowsAffected == 0 {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Photo tidak ditemukan"})
